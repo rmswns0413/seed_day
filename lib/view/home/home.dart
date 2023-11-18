@@ -12,6 +12,7 @@ class HomeBinding extends Bindings {
 
 class Home extends GetView<HomeController> {
   static const route = '/home';
+
   // 기본 해상도 1280 : 720
   const Home({super.key});
 
@@ -21,8 +22,8 @@ class Home extends GetView<HomeController> {
           backgroundColor: Colors.black,
           body: Container(
             alignment: Alignment.center,
-            child: SafeArea(
-              child: Container(
+            child: Row(children: [
+              Container(
                 width: 1024,
                 height: 600,
                 color: Colors.blueAccent,
@@ -85,7 +86,7 @@ class Home extends GetView<HomeController> {
                   ],
                 ),
               ),
-            ),
+            ]),
           ),
         ));
   }
