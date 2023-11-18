@@ -31,13 +31,13 @@ class Home extends GetView<HomeController> {
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
-                    const Align(
+                    /*const Align(
                       alignment: Alignment.topCenter,
                       child: Text(
                         'Welcome !!!',
                         style: TextStyle(color: Colors.grey, fontSize: 60),
                       ),
-                    ),
+                    ),*/
                     SizedBox(
                       height: 600 * 0.5,
                       child: Row(
@@ -80,6 +80,21 @@ class Home extends GetView<HomeController> {
                                   child: Text('${controller.day[i]}',
                                       style: controller.textStyle)),
                             ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      color: Colors.white,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TextField(
+                            controller: controller.width,
+                          ),
+                          TextField(
+                            controller: controller.height,
+                          ),
+                          ElevatedButton(onPressed: (){controller.setDisplaySize();}, child: Text('변경하기'))
                         ],
                       ),
                     )

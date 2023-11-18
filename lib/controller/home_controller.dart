@@ -12,7 +12,8 @@ class HomeController extends GetxController {
   late Timer timer;
   DayCalculator dayCalculator = DayCalculator(DateTime(2024, 2, 4));
   TextStyle textStyle = const TextStyle(color: Colors.white, fontSize: 60);
-
+  TextEditingController width = TextEditingController();
+  TextEditingController height = TextEditingController();
   @override
   void onInit() {
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -25,5 +26,11 @@ class HomeController extends GetxController {
 
   setDisplay() async {
     await DesktopWindow.setFullScreen(true);
+  }
+
+  setDisplaySize() async {
+    double widthSize = double.parse(width.text);
+    double heightSize = double.parse(height.text);
+    await DesktopWindow.setWindowSize(Size(widthSize, heightSize));
   }
 }
