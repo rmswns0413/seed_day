@@ -18,28 +18,27 @@ class Home extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => Scaffold(
-          backgroundColor: Colors.black,
-          body: Container(
-            alignment: Alignment.center,
-            child: Row(children: [
-              Container(
-                width: 1024,
-                height: 600,
-                color: Colors.blueAccent,
-                padding: const EdgeInsets.all(20),
-                child: Stack(
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Container(
+        alignment: Alignment.center,
+        child:  Container(
+          color: Colors.blueAccent,
+          padding: const EdgeInsets.all(20),
+          child: Container(
+            color: Colors.white,
+          ),
+          /* child: Stack(
                   alignment: Alignment.center,
                   children: [
-                    /*const Align(
+                    *//*const Align(
                       alignment: Alignment.topCenter,
                       child: Text(
                         'Welcome !!!',
                         style: TextStyle(color: Colors.grey, fontSize: 60),
                       ),
-                    ),*/
+                    ),*//*
                     SizedBox(
-                      height: 600 * 0.5,
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -83,7 +82,7 @@ class Home extends GetView<HomeController> {
                         ],
                       ),
                     ),
-                    Container(
+                    *//*Container(
                       color: Colors.white,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -97,12 +96,11 @@ class Home extends GetView<HomeController> {
                           ElevatedButton(onPressed: (){controller.setDisplaySize();}, child: Text('변경하기'))
                         ],
                       ),
-                    )
+                    )*//*
                   ],
-                ),
-              ),
-            ]),
-          ),
-        ));
+                ),*/
+        ),
+      ),
+    );
   }
 }
