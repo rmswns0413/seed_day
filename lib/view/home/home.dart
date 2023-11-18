@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -28,13 +30,21 @@ class Home extends GetView<HomeController> {
             child: Stack(
               children: [
                 Align(
+                  alignment: Alignment.topRight,
+                  child: IconButton(
+                    icon: Icon(Icons.close,color: Colors.white,),
+                    onPressed: () {
+                      exit(0);
+                    },
+                  ),
+                ),
+                Align(
                   alignment: Alignment.center,
                   child: Container(
-                      height: Get.height*0.5,
-                      child:Row(
+                      height: Get.height * 0.5,
+                      child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-
                           Expanded(
                             flex: 1,
                             child: Container(
@@ -59,8 +69,6 @@ class Home extends GetView<HomeController> {
                         ],
                       )),
                 ),
-
-
               ],
             ),
           ),
