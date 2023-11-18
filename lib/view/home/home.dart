@@ -21,6 +21,8 @@ class Home extends GetView<HomeController> {
           backgroundColor: Colors.black,
           body: SafeArea(
             child: Container(
+              margin: EdgeInsets.fromLTRB(60, 30  , 60, 30),
+              color: Colors.blueAccent,
               padding: const EdgeInsets.all(20),
               child: Stack(
                 alignment: Alignment.center,
@@ -56,12 +58,12 @@ class Home extends GetView<HomeController> {
                               decoration: BoxDecoration(
                                   color: Colors.amber,
                                   borderRadius: BorderRadius.circular(15)),
-                              child: Text('D', style: controller.textStyle)),
+                              child: Text('D ${Get.width} : ${Get.height}', style: controller.textStyle)),
                         ),
                         Container(
                             margin: const EdgeInsets.only(left: 20),
-                            child: Text(controller.prefix.value,
-                                style: controller.textStyle)),
+                            child: Text(/*controller.prefix.value*/'${Get.width} : ${Get.height}',
+                                style: TextStyle())),
                         for (int i = 0; i < controller.day.length; i++)
                           Expanded(
                             flex: 1,
