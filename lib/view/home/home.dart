@@ -20,7 +20,7 @@ class Home extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Obx(() => Scaffold(
       backgroundColor: Colors.black,
       body: Container(
         alignment: Alignment.center,
@@ -145,6 +145,6 @@ class Home extends GetView<HomeController> {
                 ),*/
         ),
       ),
-    );
+    ));
   }
 }
