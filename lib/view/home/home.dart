@@ -22,22 +22,58 @@ class Home extends GetView<HomeController> {
       backgroundColor: Colors.black,
       body: Container(
         alignment: Alignment.center,
-        child:  Container(
-          color: Colors.blueAccent,
+        child: Container(
           padding: const EdgeInsets.all(20),
           child: Container(
-            color: Colors.white,
+            child: Stack(
+              children: [
+                Align(
+                  alignment: Alignment.center,
+                  child: Container(
+                      height: Get.height*0.5,
+                      child:Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(15),
+                                  child: Image.asset('assets/seed.png')),
+                            ),
+                          ),
+                          for (int i = 0; i < controller.day.length; i++)
+                            Expanded(
+                              flex: 1,
+                              child: Container(
+                                  margin: const EdgeInsets.only(left: 20),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      color: Colors.amber,
+                                      borderRadius: BorderRadius.circular(15)),
+                                  child: Text('${controller.day[i]}',
+                                      style: controller.textStyle)),
+                            ),
+                        ],
+                      )),
+                ),
+
+
+              ],
+            ),
           ),
           /* child: Stack(
                   alignment: Alignment.center,
                   children: [
-                    *//*const Align(
+                    */ /*const Align(
                       alignment: Alignment.topCenter,
                       child: Text(
                         'Welcome !!!',
                         style: TextStyle(color: Colors.grey, fontSize: 60),
                       ),
-                    ),*//*
+                    ),*/ /*
                     SizedBox(
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -82,7 +118,7 @@ class Home extends GetView<HomeController> {
                         ],
                       ),
                     ),
-                    *//*Container(
+                    */ /*Container(
                       color: Colors.white,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -96,7 +132,7 @@ class Home extends GetView<HomeController> {
                           ElevatedButton(onPressed: (){controller.setDisplaySize();}, child: Text('변경하기'))
                         ],
                       ),
-                    )*//*
+                    )*/ /*
                   ],
                 ),*/
         ),
