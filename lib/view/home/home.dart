@@ -23,8 +23,8 @@ class Home extends GetView<HomeController> {
             alignment: Alignment.center,
             child: SafeArea(
               child: Container(
-                width: 1280,
-                height: 720,
+                width: 600,
+                height: 350,
                 color: Colors.blueAccent,
                 padding: const EdgeInsets.all(20),
                 child: Stack(
@@ -38,7 +38,7 @@ class Home extends GetView<HomeController> {
                       ),
                     ),
                     SizedBox(
-                      height: Get.height * 0.5,
+                      height: 350 * 0.5,
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
