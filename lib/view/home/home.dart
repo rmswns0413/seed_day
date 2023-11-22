@@ -87,30 +87,25 @@ class Home extends GetView<HomeController> {
                 child: Container(
                   margin: const EdgeInsets.fromLTRB(0, 30, 30, 0),
                   height: Get.height * 0.25,
-                  width: Get.width * 0.3,
-                  child: Column(
+                  width: Get.width * 0.4,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Expanded(
-                          child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(15),
-                            child: Stack(
-                              alignment: Alignment.center,
-                              children: [
-                                Image.asset('assets/seed.png',
-                                    fit: BoxFit.scaleDown),
-                              ],
-                            ),
-                          ),
-                          AutoSizeText(
-                              'D${controller.prefix.value}${controller.day.value}',
-                              style: GoogleFonts.josefinSans(
-                                  color: Colors.white, fontSize: 60)),
-                        ],
-                      )),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            Image.asset('assets/seed.png',
+                                fit: BoxFit.scaleDown),
+                          ],
+                        ),
+                      ),
+                      AutoSizeText(
+                          'D${controller.prefix.value}${controller.day.value}',
+                          style: GoogleFonts.josefinSans(
+                              color: Colors.white, fontSize: 60)),
                     ],
                   ),
                 ),
