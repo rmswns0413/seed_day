@@ -13,6 +13,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.6.6
   desktop_window: ^0.4.0
+  google_fonts: ^6.1.0
+  auto_size_text: ^3.0.0
+  weather: ^3.1.1
 
 dev_dependencies:
   flutter_test:
