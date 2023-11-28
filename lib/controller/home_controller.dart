@@ -21,8 +21,7 @@ class HomeController extends GetxController
   RxString currentTime = ''.obs;
   RxString currentDate = ''.obs;
   RxString theme = 'jesus'.obs;
-  TextStyle textStyle =
-      GoogleFonts.vinaSans(fontSize: 120, color: Colors.white);
+  RxDouble textSize = 0.0.obs;
   late Timer timer;
   CalculateDay calculateDay = CalculateDay(DateTime(2024, 2, 4));
   WeatherFactory wf = WeatherFactory('0d1d921ec4ff49e0f085bfb8a866b88f',
@@ -66,6 +65,7 @@ class HomeController extends GetxController
     isWeather(await repository.getWeather());
     isDday(await repository.getDday());
     calculateDay = CalculateDay(await repository.getDdayDateTime());
+    textSize(await repository.getScale());
   }
 
   setImage() async {
@@ -86,8 +86,18 @@ class HomeController extends GetxController
     await repository.setDday(isDday.value);
   }
 
-  updateDdayTime(DateTime date) async{
+  updateDdayTime(DateTime date) async {
     calculateDay = CalculateDay(DateTime(date.year, date.month, date.day));
     await repository.setDdayDateTime(date);
+  }
+
+   increase() async{
+    textSize(textSize.value+1);
+    await repository.updateScale(textSize.value);
+  }
+
+   decrease() async{
+    textSize(textSize.value-1);
+    await repository.updateScale(textSize.value);
   }
 }

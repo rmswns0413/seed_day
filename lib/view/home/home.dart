@@ -26,9 +26,7 @@ class Home extends GetView<HomeController> {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     return Obx(() => Scaffold(
           appBar: AppBar(
-            iconTheme: const IconThemeData(
-                color: Colors.white
-            ),
+            iconTheme: const IconThemeData(color: Colors.white),
             backgroundColor: Colors.transparent,
           ),
           extendBodyBehindAppBar: true,
@@ -38,38 +36,52 @@ class Home extends GetView<HomeController> {
               child: Column(
                 children: [
                   ListTile(
-                    onTap: (){
+                    onTap: () {
                       controller.updateWeather();
                     },
                     title: Container(
-                        alignment: Alignment.center,
-                        child: Text('날씨')),
-                    leading: Checkbox(value: controller.isWeather.value, onChanged: (bool? value) { controller.updateWeather(); },),
+                        alignment: Alignment.center, child: Text('날씨')),
+                    leading: Checkbox(
+                      value: controller.isWeather.value,
+                      onChanged: (bool? value) {
+                        controller.updateWeather();
+                      },
+                    ),
                   ),
                   ListTile(
-                    onTap: (){
+                    onTap: () {
                       controller.updateDday();
                     },
                     title: Container(
-                        alignment: Alignment.center,
-                        child: Text('D-day')),
-                    leading: Checkbox(value: controller.isDday.value, onChanged: (bool? value) { controller.updateDday(); },),
+                        alignment: Alignment.center, child: Text('D-day')),
+                    leading: Checkbox(
+                      value: controller.isDday.value,
+                      onChanged: (bool? value) {
+                        controller.updateDday();
+                      },
+                    ),
                   ),
                   ListTile(
-                    onTap: (){
-                      showDialog(context: context, builder: (context) {
-                        return Container(
-                          child: SfDateRangePicker(
-                            backgroundColor: Colors.white,
-                            selectionMode: DateRangePickerSelectionMode.single,
-                            onSelectionChanged: (dateRangePickerSelectionChangedArgs) {
-                              DateTime date =dateRangePickerSelectionChangedArgs.value;
-                              controller.updateDdayTime(date);
-                              Get.back();
-                            },
-                          ),
-                        );
-                      },);
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return Container(
+                            child: SfDateRangePicker(
+                              backgroundColor: Colors.white,
+                              selectionMode:
+                                  DateRangePickerSelectionMode.single,
+                              onSelectionChanged:
+                                  (dateRangePickerSelectionChangedArgs) {
+                                DateTime date =
+                                    dateRangePickerSelectionChangedArgs.value;
+                                controller.updateDdayTime(date);
+                                Get.back();
+                              },
+                            ),
+                          );
+                        },
+                      );
                     },
                     title: Container(
                         alignment: Alignment.center,
@@ -77,12 +89,28 @@ class Home extends GetView<HomeController> {
                     leading: Icon(Icons.calendar_today),
                   ),
                   ListTile(
-                    onTap: (){
+                    title: Container(
+                      alignment: Alignment.center,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          IconButton(onPressed: (){
+                            controller.decrease();
+                          }, icon: Icon(Icons.arrow_back_ios)),
+                          Text('${controller.textSize.value}'),
+                          IconButton(onPressed: (){
+                              controller.increase();
+                          }, icon: Icon(Icons.arrow_forward_ios)),
+                        ],
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    onTap: () {
                       exit(0);
                     },
                     title: Container(
-                      alignment: Alignment.center,
-                        child: Text('종료하기')),
+                        alignment: Alignment.center, child: Text('종료하기')),
                     leading: Icon(Icons.power_settings_new),
                   ),
                 ],
@@ -202,10 +230,10 @@ class Home extends GetView<HomeController> {
                   children: [
                     AutoSizeText(controller.currentDate.value,
                         style: GoogleFonts.vinaSans(
-                            color: Colors.white, fontSize: 40, height: 0.7)),
+                            color: Colors.white, fontSize: 40+controller.textSize.value, height: 0.7)),
                     AutoSizeText(controller.currentTime.value,
                         style: GoogleFonts.vinaSans(
-                            color: Colors.white, fontSize: 130, height: 0.7)),
+                            color: Colors.white, fontSize: 130+controller.textSize.value, height: 0.7)),
                   ],
                 ),
               )

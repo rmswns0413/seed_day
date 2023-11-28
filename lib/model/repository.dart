@@ -25,6 +25,10 @@ class Repository {
   getDdayDateTime() => localApi.getDdayDateTime();
 
   setDdayDateTime(DateTime date) => localApi.setDdayDateTime(date);
+
+  getScale() => localApi.getScale();
+
+  updateScale(double value) => localApi.updateScale(value);
 }
 
 typedef onSuccess = void Function(dynamic);
@@ -87,6 +91,18 @@ class LocalAPI {
     sharedPreferences = await SharedPreferences.getInstance();
     bool isSuccess = await sharedPreferences.setString(
         'DateTime', DateFormat('yyyyMMdd').format(date));
+    return isSuccess;
+  }
+
+  getScale() async {
+    sharedPreferences = await SharedPreferences.getInstance();
+    double? scale = await sharedPreferences.getDouble('Scale');
+    return scale ?? 0;
+  }
+
+  updateScale(double value) async {
+    sharedPreferences = await SharedPreferences.getInstance();
+    bool isSuccess = await sharedPreferences.setDouble('Scale', value);
     return isSuccess;
   }
 }
